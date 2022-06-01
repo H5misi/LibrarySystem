@@ -60,12 +60,11 @@ namespace LibrarySystem
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            BookDashboard bookDashboard = new BookDashboard();
+            bookDashboard.Show();
+            this.Hide();
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

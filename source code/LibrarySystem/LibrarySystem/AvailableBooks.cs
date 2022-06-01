@@ -86,15 +86,13 @@ namespace LibrarySystem
             {
                 if (dataGridView1.SelectedRows[0].Cells[5].Value.ToString() == "Available")
                 {
-                    con.Open();
-                    con.ChangeDatabase("LibrarySystem");
                     cmd = new SqlCommand("insert into BorrowedBooks(customerUsername, bookId, bookName, borrowDate, returnDeadline) values (" + customerUsername + (int)dataGridView1.SelectedRows[0].Cells[0].Value + ",'" + dataGridView1.SelectedRows[0].Cells[1].Value.ToString() + "','" + DateTime.Now.Date.ToShortDateString() + "','" + DateTime.Now.AddDays(14).ToShortDateString() + "')", con);
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Borrowed successfully");
                     cmd = new SqlCommand("update BooksInfo set Availability = 'Not Available' where bookId = " + dataGridView1.SelectedRows[0].Cells[0].Value.ToString(), con);
                     cmd.ExecuteNonQuery();
                     dataGridView1_Filling();
-                    con.Close();
+                    
                 }
                 else
                 {

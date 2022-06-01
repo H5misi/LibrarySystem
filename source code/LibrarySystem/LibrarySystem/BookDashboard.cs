@@ -44,7 +44,7 @@ namespace LibrarySystem
             try
             {
 
-                cmd = new SqlCommand("create table BooksInfo( bookId int primary Key unique, bookName varchar(255), authorName varchar(255), publication varchar(255), purchaseDate varchar(255), bookPrice int, Availability varchar(50))", con);
+                cmd = new SqlCommand("create table BooksInfo( bookId int primary Key unique, bookName varchar(255), authorName varchar(255), publication varchar(255), purchaseDate varchar(255), Availability varchar(50))", con);
                 cmd.ExecuteNonQuery();
 
                 populate();
@@ -116,7 +116,7 @@ namespace LibrarySystem
         {
             try
             {
-                string cmdStr = "Delete from BooksInfo Where bookId =" + Convert.ToInt32(textBox1.Text);
+                //string cmdStr = "Delete from BooksInfo Where bookId =" + Convert.ToInt32(textBox1.Text);
                 cmd = new SqlCommand(/*cmdStr*/"Delete from BooksInfo Where bookId =" + Convert.ToInt32(textBox1.Text), con);
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Delete succeeded");

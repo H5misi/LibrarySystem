@@ -62,17 +62,25 @@ namespace LibrarySystem
 
         private void BorrowedBooks_Load(object sender, EventArgs e)
         {
-            
+            populate();
         }
 
+        private void populate()
+        {  
+            DataSet ds = new DataSet();
+            da = new SqlDataAdapter("select * from Borrow", con);
+            da.Fill(ds);
+            dataGridView1.DataSource = ds.Tables[0];
+        }
+        
         private void button1_Click(object sender, EventArgs e)
         {
             try
             {
-                cmd = new SqlCommand("delete from BorrowedBooks where bookId ' " + dataGridView1.SelectedRows[0].Cells[1].Value, con);
+                cmd = new SqlCommand("delete from BorrowedBooks where bookId ' " + dataGridView1.SelectedRows[0].Cells[1].Value + "' ", con);
                 cmd.ExecuteNonQuery();
 
-                cmd = new SqlCommand("update BooksInfo set Availability = 'Available' ", con);
+                cmd = new SqlCommand("update BooksInfo set Availability = 'Available' where bookId = '" + dataGridView1.SelectedRows[0].Cells[1].Value + "' ", con);
                 cmd.ExecuteNonQuery();
 
                 MessageBox.Show("Book returned successfully");

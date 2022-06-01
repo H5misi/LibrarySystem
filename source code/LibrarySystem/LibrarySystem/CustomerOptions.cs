@@ -60,7 +60,7 @@ namespace LibrarySystem
         {
             try
             {
-                cmd = new SqlCommand("create table BorrowedBooks(customerUsername varchar(50) unique, bookId int unique, bookName varchar(255), borrowDate varchar(255), returnDeadline)");
+                cmd = new SqlCommand("create table BorrowedBooks(customerUsername varchar(50), bookId int unique, bookName varchar(255), borrowDate varchar(255), returnDeadline)");
                 cmd.ExecuteNonQuery();
             }
             catch
@@ -81,11 +81,6 @@ namespace LibrarySystem
             AvailableBooks availableBooks = new AvailableBooks(customerUsername);
             availableBooks.Show();
             this.Hide();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void button4_Click(object sender, EventArgs e)
