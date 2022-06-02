@@ -45,7 +45,9 @@ namespace LibrarySystem
 
                 cmd = new SqlCommand("create table CustomerLogin(userName varchar(255) unique, password varchar(255))", con);
                 cmd.ExecuteNonQuery();
-                
+                /*cmd = new SqlCommand("insert into CustomerLogin values('admin', 'admin')", con);
+                cmd.ExecuteNonQuery();*/
+
 
             }
             catch

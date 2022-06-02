@@ -54,13 +54,15 @@ namespace LibrarySystem
                 MessageBox.Show(ex.Message);
             }
 
+            
+
         }
 
         private void CustomerOptions_Load(object sender, EventArgs e)
         {
             try
             {
-                cmd = new SqlCommand("create table BorrowedBooks(customerUsername varchar(50), bookId int unique, bookName varchar(255), borrowDate varchar(255), returnDeadline)");
+                cmd = new SqlCommand("create table BorrowedBooks(customerUsername varchar(50), bookId int unique, bookName varchar(255), borrowDate varchar(255), returnDeadline varchar(255) )", con);
                 cmd.ExecuteNonQuery();
             }
             catch

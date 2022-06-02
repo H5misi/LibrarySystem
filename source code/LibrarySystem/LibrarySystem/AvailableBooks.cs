@@ -23,13 +23,13 @@ namespace LibrarySystem
         
         string customerUsername;
 
-        private void dataGridView1_Filling()
+        /*private void dataGridView1_Filling()
         {
             ds.Clear();
             da = new SqlDataAdapter("Select * from BooksInfo", con);
             da.Fill(ds, "BookInfo");
             dataGridView1.DataSource = ds.Tables["BooksInfo"];
-        }
+        }*/
         
         public AvailableBooks()
         {
@@ -63,19 +63,23 @@ namespace LibrarySystem
             
         }
 
+        private void populate()
+        {
+
+            //string daStr = "select * from Books";
+            da = new SqlDataAdapter(/*daStr*/"select * from BooksInfo", con);
+            SqlCommandBuilder builder = new SqlCommandBuilder(da);
+            ds = new DataSet();
+            da.Fill(ds);
+            dataGridView1.DataSource = ds.Tables[0];
+
+
+        }
+        
         private void AvailableBooks_Load(object sender, EventArgs e)
         {
-            try
-            {
-                con.Open();
-                con.ChangeDatabase("LibrarySystem");
-
-                dataGridView1_Filling();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            //dataGridView1_Filling();
+            populate();
 
             
         }
@@ -91,7 +95,8 @@ namespace LibrarySystem
                     MessageBox.Show("Borrowed successfully");
                     cmd = new SqlCommand("update BooksInfo set Availability = 'Not Available' where bookId = " + dataGridView1.SelectedRows[0].Cells[0].Value.ToString(), con);
                     cmd.ExecuteNonQuery();
-                    dataGridView1_Filling();
+                    //dataGridView1_Filling();
+                    populate();
                     
                 }
                 else

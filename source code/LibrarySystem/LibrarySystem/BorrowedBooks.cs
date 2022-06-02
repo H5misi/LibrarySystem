@@ -68,7 +68,7 @@ namespace LibrarySystem
         private void populate()
         {  
             DataSet ds = new DataSet();
-            da = new SqlDataAdapter("select * from Borrow", con);
+            da = new SqlDataAdapter("select * from BorrowedBooks", con);
             da.Fill(ds);
             dataGridView1.DataSource = ds.Tables[0];
         }

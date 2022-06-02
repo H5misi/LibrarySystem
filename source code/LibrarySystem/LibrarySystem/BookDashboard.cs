@@ -44,7 +44,7 @@ namespace LibrarySystem
             try
             {
 
-                cmd = new SqlCommand("create table BooksInfo( bookId int primary Key unique, bookName varchar(255), authorName varchar(255), publication varchar(255), purchaseDate varchar(255), Availability varchar(50))", con);
+                cmd = new SqlCommand("create table BooksInfo( bookId int primary Key , bookName varchar(255), authorName varchar(255), publication varchar(255), purchaseDate varchar(255), Availability varchar(50))", con);
                 cmd.ExecuteNonQuery();
 
                 populate();
