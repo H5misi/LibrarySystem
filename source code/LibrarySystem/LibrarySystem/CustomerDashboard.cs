@@ -85,7 +85,7 @@ namespace LibrarySystem
                 pictureBox1.Image.Save(ms, pictureBox1.Image.RawFormat);
                 byte[] images = ms.ToArray();
                 
-                cmd = new SqlCommand("insert into CustomersInfo(customerId, customerName, dateBirth, customerContact, CutsomerEmail, cutomerImage) values('" + int.Parse(textBox1.Text) + "','" + textBox2.Text + "','" + dateTimePicker1.Text + "','" + int.Parse(textBox3.Text) + "','" + textBox4.Text + "', @images)", con);
+                cmd = new SqlCommand("insert into CustomersInfo(customerId, customerName, dateBirth, customerContact, cutsomerEmail, customerImage) values('" + int.Parse(textBox1.Text) + "','" + textBox2.Text + "','" + dateTimePicker1.Text + "','" + int.Parse(textBox3.Text) + "','" + textBox4.Text + "', @images)", con);
                 cmd.Parameters.Add(new SqlParameter("@images", images));
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("data added sucessfully");
